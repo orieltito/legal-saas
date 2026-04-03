@@ -13,13 +13,15 @@
     "@nestjs/core": "^10",
     "@nestjs/jwt": "^10",
     "@nestjs/platform-express": "^10",
-    "@prisma/client": "^5",
+    "@prisma/client": "^5.0.0",
     "bcrypt": "^5",
     "reflect-metadata": "^0.1.13",
     "rxjs": "^7"
   },
   "devDependencies": {
+    "prisma": "^5.0.0"
     "@nestjs/cli": "^10.4.9",
     "typescript": "^5.0.0"
+    
   }
 }
