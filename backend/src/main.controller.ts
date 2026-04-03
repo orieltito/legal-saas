@@ -4,6 +4,6 @@ import { Controller, Get } from '@nestjs/common';
 export class MainController {
   @Get()
   home() {
-    return { status: 'API ONLINE };
+    return { status: 'API ONLINE 🚀' };
   }
 }
