@@ -27,10 +27,8 @@ export default function Dashboard() {
         </div>
 
         <div className="bg-white p-4 rounded shadow">
-          {clients.map((c: any) => (
-            <div key={c.id} className="border-b py-2">
-              {c.name}
-            </div>
+          {Array.isArray(clients) && clients.map((c: any) => (
+            <div key={c.id}>{c.name}</div>
           ))}
         </div>
       </div>

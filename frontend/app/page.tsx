@@ -12,19 +12,20 @@ useEffect(() => {
     }
   })
     .then(res => res.json())
-    .then(setClients)
-    .catch(err => console.error('Erro:', err));
+    .then(data => {
+      console.log("API:", data); // debug
+      setClients(data);
+    })
+    .catch(err => console.error(err));
 }, []);
 
   return (
     <div className="p-10">
       <h1 className="text-2xl font-bold">Clientes</h1>
 
-      {clients.map((c: any) => (
-        <div key={c.id} className="p-4 border rounded mt-2">
-          {c.name}
-        </div>
-      ))}
+      {Array.isArray(clients) && clients.map((c: any) => (
+  <div key={c.id}>{c.name}</div>
+))}
     </div>
   );
 }
