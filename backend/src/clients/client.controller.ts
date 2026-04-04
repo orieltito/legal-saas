@@ -1,6 +1,10 @@
 import { Controller, Get, Post, Body, Param, Put, Delete } from '@nestjs/common';
 import { ClientService } from './client.service';
+import { UseGuards } from '@nestjs/common';
+import { JwtGuard } from '../auth/jwt.guard';
 
+@UseGuards(JwtGuard)
+@Controller('clients')
 @Controller('clients')
 export class ClientController {
   constructor(private service: ClientService) {}
