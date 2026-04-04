@@ -6,7 +6,7 @@ export default function Dashboard() {
   const [clients, setClients] = useState([]);
 
   useEffect(() => {
-    fetch('https://SUA-API/clients')
+    fetch('https://legal-saas-production-8e02.up.railway.app/clients')
       .then(res => res.json())
       .then(setClients);
   }, []);
