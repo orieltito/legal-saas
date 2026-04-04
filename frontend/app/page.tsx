@@ -6,17 +6,25 @@ export default function Dashboard() {
   const [clients, setClients] = useState([]);
 
 useEffect(() => {
+  const token = localStorage.getItem("token");
+
   fetch('https://legal-saas-production-8e02.up.railway.app/clients', {
     headers: {
-      Authorization: `Bearer ${localStorage.getItem('token')}`
+      Authorization: `Bearer ${token}`
     }
   })
     .then(res => res.json())
     .then(data => {
-      console.log("API:", data); // debug
-      setClients(data);
+      console.log("RESPOSTA API:", data);
+
+      if (Array.isArray(data)) {
+        setClients(data);
+      } else {
+        console.error("Erro API:", data);
+        setClients([]);
+      }
     })
-    .catch(err => console.error(err));
+    .catch(err => console.error("Erro fetch:", err));
 }, []);
 
   return (
