@@ -5,8 +5,15 @@ import { PrismaService } from '../prisma/prisma.service';
 export class ClientService {
   constructor(private prisma: PrismaService) {}
 
-  create(data: any) {
-    return this.prisma.client.create({ data });
+  create(data: any, userId: string) {
+  return this.prisma.client.create({
+    data: {
+      name: data.name,
+      email: data.email,
+      phone: data.phone,
+      userId: userId
+    }
+  });
   }
 
   findAll() {
