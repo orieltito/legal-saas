@@ -1,13 +1,12 @@
 export default function Sidebar() {
   return (
-    <div className="w-64 h-screen bg-gray-900 text-white p-5">
-      <h1 className="text-xl font-bold mb-10">Legal SaaS</h1>
+    <div className="w-64 h-screen bg-black text-white p-6">
+      <h1 className="text-2xl font-bold mb-10">Legal SaaS</h1>
 
-      <ul className="space-y-4">
-        <li>Dashboard</li>
-        <li>Clientes</li>
-        <li>Processos</li>
-      </ul>
+      <nav className="space-y-4">
+        <a href="/dashboard">Dashboard</a>
+        <a href="/clients">Clientes</a>
+      </nav>
     </div>
   );
 }

@@ -1,23 +1,14 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
-import type React as ReactType from 'react';
+import { useEffect, useState } from 'react';
 import Sidebar from '../../components/Sidebar';
+import { apiFetch } from '../../services/api';
 
-interface Client {
-  id: string;
-  name: string;
-}
-
-export default function Dashboard(): React.ReactElement {
-  const [clients, setClients] = useState<Client[]>([]);
+export default function Dashboard() {
+  const [clients, setClients] = useState([]);
 
   useEffect(() => {
-    fetch('https://legal-saas-production-8e02.up.railway.app/clients', {
-      headers: {
-        Authorization: `Bearer ${typeof window !== 'undefined' ? localStorage.getItem('token') : ''}`
-      }
-    })
+    apiFetch('/clients')
       .then(res => res.json())
       .then(setClients);
   }, []);
@@ -26,17 +17,17 @@ export default function Dashboard(): React.ReactElement {
     <div className="flex">
       <Sidebar />
 
-      <div className="p-10 w-full">
+      <div className="p-10 w-full bg-gray-50">
         <h1 className="text-2xl font-bold mb-6">Dashboard</h1>
 
         <div className="grid grid-cols-3 gap-4 mb-6">
-          <div className="p-4 bg-white shadow rounded">
-            Total Clientes: {clients.length}
+          <div className="bg-white p-4 rounded shadow">
+            Clientes: {clients.length}
           </div>
         </div>
 
-        <div className="bg-white shadow rounded p-4">
-          {clients.map((c: Client) => (
+        <div className="bg-white p-4 rounded shadow">
+          {clients.map((c: any) => (
             <div key={c.id} className="border-b py-2">
               {c.name}
             </div>
