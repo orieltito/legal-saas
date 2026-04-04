@@ -5,15 +5,16 @@ import { useEffect, useState } from 'react';
 export default function Dashboard() {
   const [clients, setClients] = useState([]);
 
-  useEffect(() => {
-    fetch('https://legal-saas-production-8e02.up.railway.app/clients', {
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem('token')}`
-      }
-    })
-      .then(res => res.json())
-      .then(setClients);
-  }, []);
+useEffect(() => {
+  fetch('https://legal-saas-production-8e02.up.railway.app/clients', {
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem('token')}`
+    }
+  })
+    .then(res => res.json())
+    .then(setClients)
+    .catch(err => console.error('Erro:', err));
+}, []);
 
   return (
     <div className="p-10">
