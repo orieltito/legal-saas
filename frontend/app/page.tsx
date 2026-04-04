@@ -6,7 +6,11 @@ export default function Dashboard() {
   const [clients, setClients] = useState([]);
 
   useEffect(() => {
-    fetch('https://legal-saas-production-8e02.up.railway.app/clients')
+    fetch('https://legal-saas-production-8e02.up.railway.app/clients', {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('token')}`
+      }
+    })
       .then(res => res.json())
       .then(setClients);
   }, []);
