@@ -2,6 +2,7 @@ import { Controller, Get, Post, Body, Param, Put, Delete } from '@nestjs/common'
 import { ClientService } from './client.service';
 import { UseGuards } from '@nestjs/common';
 import { JwtGuard } from '../auth/jwt.guard';
+import { Req } from '@nestjs/common';
 
 @UseGuards(JwtGuard)
 @Controller('clients')
@@ -15,9 +16,9 @@ export class ClientController {
   }
 
   @Post()
-  create(@Body() body: any) {
-    return this.service.create(body);
-  }
+create(@Body() body: any, @Req() req: any) {
+  return this.service.create(body, req.user.userId);
+}
 
   @Put(':id')
   update(@Param('id') id: string, @Body() body: any) {
