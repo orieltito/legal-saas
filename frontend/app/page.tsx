@@ -32,7 +32,9 @@ useEffect(() => {
       <h1 className="text-2xl font-bold">Clientes</h1>
 
       {Array.isArray(clients) && clients.map((c: any) => (
-  <div key={c.id}>{c.name}</div>
+  <div key={c.id} className="p-4 border rounded mt-2">
+    {c.name}
+  </div>
 ))}
     </div>
   );
